@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Betavoice.Models.Track>
+@{
+    ViewBag.Title = "Music";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Music</h2>
+
+<table id="tracks" class="table table-bordered table-hover ">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+            var table = $("#tracks").DataTable({
+                ajax: {
+                    url: "/api/tracks",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "Author"
+                    },
+                    {
+                        data: "Title"
+                    }
+                ]
+            });
+        });
+    </script>
+}
